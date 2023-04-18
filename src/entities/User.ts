@@ -3,10 +3,7 @@ import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
-export class Post {
-    @Field(() => String)
-    @Property({ type: "text" })
-    title!: string;
+export class User {
 
     @Field(() => Int)
     @PrimaryKey()
@@ -19,14 +16,11 @@ export class Post {
     @Field(() => String)
     @Property({ type: "date", onUpdate: () => new Date() })
     updatedAt = new Date();
-}
 
-@ObjectType()
-export class PostResponse {
+    @Field(() => String)
+    @Property()
+    username: string
 
-    @Field(() => Post, { nullable: true })
-    data: Post;
-
-    @Field(() => Boolean)
-    isCached: boolean;
+    @Property()
+    password: string
 }
